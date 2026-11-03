@@ -1,0 +1,13 @@
+{
+  "name": "pi-miner-gold-rush",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "test": "node test.js",
+    "start": "node server.js"
+  },
+  "description": "Pi Miner Gold Rush \u2014 classic Gold Miner reskinned with virtual Pi points. SoloHost ready."
+}
