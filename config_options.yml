@@ -1,0 +1,7 @@
+title: "Pi Miner Gold Rush"
+eyebrow: SoloHost App
+description: "Tạo cho tôi game đào Pi -> mô phỏng game đào vàng ngày xưa"
+footer_hint: "Only enter required secrets (at most 2). Other settings use safe defaults."
+output_file: .env
+after_save: "Settings saved. Start the app from SoloHost."
+fields: []

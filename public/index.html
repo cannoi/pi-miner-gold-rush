@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Pi Miner Gold Rush</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #2c3e50; color: white; }
+        #game-canvas { background: #f1c40f; border: 5px solid #d35400; margin: 20px auto; display: none; cursor: crosshair; }
+        .paf-made-by { position: fixed; bottom: 10px; right: 10px; font-size: 10px; opacity: 0.7; }
+    </style>
+<style>.paf-made-by{position:fixed;right:8px;bottom:8px;width:min(72px,12vw);max-width:12vw;height:auto;object-fit:contain;opacity:.5;background:transparent;padding:0;border:0;box-shadow:none;filter:none;pointer-events:none;z-index:30}</style></head>
+<body>
+    <div id="home">
+        <h1>Pi Miner Gold Rush</h1>
+        <p>Điều khiển móc câu để thu thập các đồng Pi!</p>
+        <button onclick="startGame()">Bắt đầu chơi</button>
+    </div>
+    <div id="game">
+        <div id="score">Điểm: 0</div>
+        <canvas id="game-canvas" width="600" height="400"></canvas>
+    </div>
+    
+    <script>
+        function startGame() {
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('game-canvas').style.display = 'block';
+            const canvas = document.getElementById('game-canvas');
+            const ctx = canvas.getContext('2d');
+            let score = 0;
+            let hookAngle = 0;
+            let hookSpeed = 0.05;
+            let hookLength = 50;
+            let isExtending = false;
+            let items = [{x: 100, y: 300, val: 10}, {x: 300, y: 350, val: 50}, {x: 500, y: 250, val: 20}];
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'black';
+                ctx.beginPath();
+                ctx.moveTo(300, 0);
+                ctx.lineTo(300 + Math.cos(hookAngle) * hookLength, Math.sin(hookAngle) * hookLength);
+                ctx.stroke();
+                items.forEach(item => {
+                    ctx.fillStyle = 'gold';
+                    ctx.fillRect(item.x, item.y, 20, 20);
+                });
+                requestAnimationFrame(draw);
+            }
+            canvas.addEventListener('click', () => { hookSpeed = 0; });
+            draw();
+        }
+    </script>
+<img class="paf-made-by" src="/made-by.png" alt="Made with App Builder — Pi SoloHost"></body>
+</html>
